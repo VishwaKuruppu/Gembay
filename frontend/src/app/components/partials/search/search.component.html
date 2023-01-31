@@ -1,0 +1,6 @@
+<div class="search-wrapper">
+  <div class="input-wrapper">
+    <input #s type="text" placeholder="Search for gem!" (keyup.enter)="search(s.value)" [value]="searchTerm" />
+    <button (click)="search(s.value)">Search</button>
+  </div>
+</div>

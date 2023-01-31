@@ -1,0 +1,53 @@
+<app-not-found
+  [visible]="!food"
+  notFoundMessage="Food Not Found"
+  resetLinkText="Back To Homepage">
+</app-not-found>
+<div *ngIf="food" class="container">
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{food.name}}
+      </span>
+    </div>
+    <div class="rating">
+      <star-rating
+      [value]="food.stars"
+      [totalstars]="5"
+      checkedcolor="gold"
+      uncheckedcolor="grey"
+      size="25px"
+      [readonly]="true">
+    </star-rating>
+    </div>
+
+    <div class="origins">
+      <p>Origin Countries : </p>
+      <span *ngFor="let origin of food.origins">
+        {{origin}}
+      </span>
+    </div>
+
+    <div class="tags">
+      <a *ngFor="let tag of food.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+
+    <div class="cook-time">
+      <span>
+        This gem contains about <strong>{{food.cookTime}}</strong> carats in weight.
+         Please note that Product color may slightly vary due to photographic lighting
+          sources or your monitor settings.
+      </span>
+    </div>
+
+    <div class="price">
+      <span>
+        {{food.price | currency}}
+      </span>
+    </div>
+    <button (click)="addToCart()">Add To Cart</button>
+  </div>
+  <img [src]="food.imageUrl" [alt]="food.name"/>
+</div>
